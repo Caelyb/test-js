@@ -12,7 +12,18 @@ const data = require("./data");
  */
 
  // Your code
+const players = data.getPlayers()
 
+const test1 = (players) => {
+    for (i = 0; players.length > i; i++) {
+        console.log("PLAYER "+i)
+        console.log("NAME:", players[i].name)
+        console.log("LASTNAME:", players[i].lastname)
+        console.log("POSITION:", players[i].position)
+    }
+}
+
+// test1(players)
 
 
 /**
@@ -21,10 +32,21 @@ const data = require("./data");
  */
 
 // Your code
+const compareByLength = (a, b) => {
+    return b.length - a.length;
+  }
 
 
+const test2 = (players) => {
+    array = []
+    for (i = 0; players.length > i; i++) {
+      array.push(players[i].name)
+    } 
+    array.sort(compareByLength)
+  return array
+}
 
-
+//console.log("Player names in decending order:",test2(players))
 
 /**
  * Test 3
@@ -36,7 +58,18 @@ const data = require("./data");
 
 // Your code
 
+const test3 = (players) => {
+    array = []
+    for (i = 0; players.length > i; i++) {
+      array.push(players[i].scoringChance)
+    } 
+    // Calculate the average
+    const average = array.reduce((sum, num) => sum + num, 0) / array.length;
+    // divide by 100 to get from percentage to prob, x 10 players
+  return average/10
+}
 
+// console.log("Average team score", test3(players))
 
 /**
  * Test 4
@@ -45,7 +78,18 @@ const data = require("./data");
 
 // Your code
 
+const test4 = (first, last) => {
+    // this function uses full name to avoid 2 players having the same name giving multiple outputs.
+    for (i = 0; players.length > i; i++) {
+        if (players[i].name == first) {
+            if (players[i].lastname == last) {
+                console.log(players[i].position)
+        }
+      } 
+    }
+}
 
+// test4(players[4].name, players[4].lastname)
 
 /**
  * Test 5
@@ -57,3 +101,22 @@ const data = require("./data");
  */
 
 // Your code
+
+const test5 = (players) => {
+    team1 = []
+    team2 = players
+    teamSize = players.length/2 
+
+    for (i = 0; i < teamSize ; i++) {
+        let index = Math.floor(Math.random() * team2.length);
+        team1.push(players[index])
+        team2.splice(index, 1)
+
+    }
+    // console.log("Team 1:", (team1)) // check teams have different players
+    // console.log("Team 2:", (team2))
+    console.log("Team 1 score:", Math.round(test3(team1)))
+    console.log("Team 2 score:", Math.round(test3(team2)))
+}
+
+test5(players)

@@ -1,6 +1,6 @@
 
 module.exports = {
-    getPlayers: () => {
+    getPlayers: () => { 
         return [
             {
                 name: "Tammy",
@@ -54,7 +54,7 @@ module.exports = {
                 name: "Diego",
                 lastname: "llorente",
                 position: "defender",
-                scoringChance: "4"
+                scoringChance: 4 // this was written as a string "" but should be an int 
             },
             {
                 name: "Lucas",
