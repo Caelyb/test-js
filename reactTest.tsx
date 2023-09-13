@@ -98,7 +98,6 @@ export const Test2Component = (props: ITest2ComponentProps) => {
             const fetchedAge = await getAge(props.name);
             // Update the age state with the fetched age
             setAge(fetchedAge);
-            // console.log("age is:", fetchedAge)
           } catch (error) {
             // Handle any errors that occur during the API call
             console.error('Error fetching age:', error);
@@ -107,7 +106,6 @@ export const Test2Component = (props: ITest2ComponentProps) => {
         // Call the fetchAge function to initiate the API request
         fetchAge();
       }, [props.name]);
-      console.log("final",props, age)
       // Render the component conditionally based on the age
       return (
         <div style={{ color: age && age >= 18 ? 'blue' : 'red' }}> 
